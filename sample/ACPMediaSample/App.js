@@ -33,7 +33,6 @@ export default class App extends Component<Props> {
       <View style={styles.container}>
         <ScrollView contentContainerStyle={{ marginTop: 75 }}>
         <Text style={styles.welcome}>ACPMedia Test App</Text>
-        <Text style={styles.instructions}> {"Test : " + ACPMediaEvent.AdBreakStart} </Text>
         <Button title="ACPCore::extensionVersion()" onPress={() => this.coreExtensionVersion()}/>
         <Button title="ACPMedia::extensionVersion()" onPress={() => this.mediaExtensionVersion()}/>
         <Button title="ACPMedia::createTracker()" onPress={() => this.createTracker()}/>
@@ -72,7 +71,7 @@ export default class App extends Component<Props> {
     config[ACPMediaConstants.ACPMediaKeyConfigDownloadedContent] = true;
     ACPMedia.createTrackerWithConfig(config).then(tracker =>
       this.setState({currentTracker: tracker})
-    ).catch(err => console.log(err));;
+    ).catch(err => console.log(err));
   }
 
   // Tracker API's

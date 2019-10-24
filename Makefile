@@ -19,7 +19,7 @@ build-sample-android:
 	(cd sample/ACP*Sample/android && ./gradlew assembleRelease)
 
 build-sample-ios:
-	(cd sample/ACP*Sample/ios && xcodebuild build -project ACPTargetSample.xcodeproj -scheme ACPTargetSample CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" CODE_SIGNING_ALLOWED="NO")
+	(cd sample/ACP*Sample/ios && xcodebuild build -project ACPMediaSample.xcodeproj -scheme ACPMediaSample CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED="NO" CODE_SIGNING_ALLOWED="NO")
 
 run-tests:
 	jest --testPathIgnorePatterns sample/ node_modules/ --modulePathIgnorePatterns sample/ --runInBand
