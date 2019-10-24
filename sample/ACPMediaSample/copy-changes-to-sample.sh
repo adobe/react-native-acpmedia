@@ -16,6 +16,3 @@ tar -xvzf node_modules/@adobe/*.tgz --directory=node_modules/@adobe/
 rm node_modules/@adobe/*.tgz
 rm -r node_modules/@adobe/$EXTENSION_NAME
 mv node_modules/@adobe/package node_modules/@adobe/$EXTENSION_NAME
-
-echo 'Linking'
-cd ios/ && pod install

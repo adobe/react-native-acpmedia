@@ -91,6 +91,10 @@ jobs:
           command: make copy-to-sample
 
       - run:
+          name: pod install
+          command: cd sample/ACP*Sample && pod install
+
+      - run:
           name: Building iOS Sample App
           command: make build-sample-ios
 
