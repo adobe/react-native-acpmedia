@@ -1,14 +1,26 @@
+/*
+Copyright 2019 Adobe. All rights reserved.
+This file is licensed to you under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License. You may obtain a copy
+of the License at http://www.apache.org/licenses/LICENSE-2.0
+Unless required by applicable law or agreed to in writing, software distributed under
+the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
+OF ANY KIND, either express or implied. See the License for the specific language
+governing permissions and limitations under the License.
+*/
+
 package com.acpmediasample;
 
 import android.app.Application;
-import android.content.Context;
-import com.facebook.react.PackageList;
+
 import com.facebook.react.ReactApplication;
+import com.adobe.marketing.mobile.reactnative.media.RCTACPMediaPackage;
+import com.adobe.marketing.mobile.reactnative.RCTACPCorePackage;
+import com.adobe.marketing.mobile.reactnative.analytics.RCTACPAnalyticsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
+import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-import java.lang.reflect.InvocationTargetException;
-import java.util.List;
 import com.adobe.marketing.mobile.MobileCore; // import MobileCore
 import com.adobe.marketing.mobile.Identity;
 import com.adobe.marketing.mobile.Lifecycle;
@@ -17,29 +29,32 @@ import com.adobe.marketing.mobile.WrapperType;
 import com.adobe.marketing.mobile.LoggingMode;
 import com.adobe.marketing.mobile.Media;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class MainApplication extends Application implements ReactApplication {
 
-  private final ReactNativeHost mReactNativeHost =
-      new ReactNativeHost(this) {
-        @Override
-        public boolean getUseDeveloperSupport() {
-          return BuildConfig.DEBUG;
-        }
+  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+    @Override
+    public boolean getUseDeveloperSupport() {
+      return BuildConfig.DEBUG;
+    }
 
-        @Override
-        protected List<ReactPackage> getPackages() {
-          @SuppressWarnings("UnnecessaryLocalVariable")
-          List<ReactPackage> packages = new PackageList(this).getPackages();
-          // Packages that cannot be autolinked yet can be added manually here, for example:
-          // packages.add(new MyReactNativePackage());
-          return packages;
-        }
+    @Override
+    protected List<ReactPackage> getPackages() {
+      return Arrays.<ReactPackage>asList(
+          new MainReactPackage(),
+            new RCTACPMediaPackage(),
+            new RCTACPCorePackage(),
+            new RCTACPAnalyticsPackage()
+      );
+    }
 
-        @Override
-        protected String getJSMainModuleName() {
-          return "index";
-        }
-      };
+    @Override
+    protected String getJSMainModuleName() {
+      return "index";
+    }
+  };
 
   @Override
   public ReactNativeHost getReactNativeHost() {
@@ -50,7 +65,6 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
-    initializeFlipper(this); // Remove this line if you don't want Flipper enabled
 
     MobileCore.setApplication(this); // add this line
     MobileCore.setLogLevel(LoggingMode.VERBOSE);
@@ -67,31 +81,5 @@ public class MainApplication extends Application implements ReactApplication {
     }
 
     MobileCore.start(null);
-  }
-
-  /**
-   * Loads Flipper in React Native templates.
-   *
-   * @param context
-   */
-  private static void initializeFlipper(Context context) {
-    if (BuildConfig.DEBUG) {
-      try {
-        /*
-         We use reflection here to pick up the class that initializes Flipper,
-        since Flipper library is not available in release mode
-        */
-        Class<?> aClass = Class.forName("com.facebook.flipper.ReactNativeFlipper");
-        aClass.getMethod("initializeFlipper", Context.class).invoke(null, context);
-      } catch (ClassNotFoundException e) {
-        e.printStackTrace();
-      } catch (NoSuchMethodException e) {
-        e.printStackTrace();
-      } catch (IllegalAccessException e) {
-        e.printStackTrace();
-      } catch (InvocationTargetException e) {
-        e.printStackTrace();
-      }
-    }
   }
 }

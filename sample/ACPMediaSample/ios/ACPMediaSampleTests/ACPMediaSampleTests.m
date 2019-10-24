@@ -1,15 +1,14 @@
 /*
 Copyright 2019 Adobe. All rights reserved.
-This file is licensed to you under the Apache License, Version 2.0 (the "License"),
+This file is licensed to you under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License. You may obtain a copy
 of the License at http://www.apache.org/licenses/LICENSE-2.0
 Unless required by applicable law or agreed to in writing, software distributed under
 the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR REPRESENTATIONS
 OF ANY KIND, either express or implied. See the License for the specific language
 governing permissions and limitations under the License.
-@flow
-@format
 */
+
 
 #import <UIKit/UIKit.h>
 #import <XCTest/XCTest.h>
@@ -18,7 +17,7 @@ governing permissions and limitations under the License.
 #import <React/RCTRootView.h>
 
 #define TIMEOUT_SECONDS 600
-#define TEXT_TO_LOOK_FOR @"Welcome to React"
+#define TEXT_TO_LOOK_FOR @"Welcome to React Native!"
 
 @interface ACPMediaSampleTests : XCTestCase
 
@@ -46,13 +45,11 @@ governing permissions and limitations under the License.
   BOOL foundElement = NO;
 
   __block NSString *redboxError = nil;
-#ifdef DEBUG
   RCTSetLogFunction(^(RCTLogLevel level, RCTLogSource source, NSString *fileName, NSNumber *lineNumber, NSString *message) {
     if (level >= RCTLogLevelError) {
       redboxError = message;
     }
   });
-#endif
 
   while ([date timeIntervalSinceNow] > 0 && !foundElement && !redboxError) {
     [[NSRunLoop mainRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate dateWithTimeIntervalSinceNow:0.1]];
@@ -66,9 +63,7 @@ governing permissions and limitations under the License.
     }];
   }
 
-#ifdef DEBUG
   RCTSetLogFunction(RCTDefaultLogFunction);
-#endif
 
   XCTAssertNil(redboxError, @"RedBox error: %@", redboxError);
   XCTAssertTrue(foundElement, @"Couldn't find element with text '%@' in %d seconds", TEXT_TO_LOOK_FOR, TIMEOUT_SECONDS);
