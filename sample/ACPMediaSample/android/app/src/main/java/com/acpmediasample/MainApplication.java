@@ -27,6 +27,7 @@ import com.adobe.marketing.mobile.Lifecycle;
 import com.adobe.marketing.mobile.Signal;
 import com.adobe.marketing.mobile.WrapperType;
 import com.adobe.marketing.mobile.LoggingMode;
+import com.adobe.marketing.mobile.Analytics;
 import com.adobe.marketing.mobile.Media;
 
 import java.util.Arrays;
@@ -75,6 +76,7 @@ public class MainApplication extends Application implements ReactApplication {
       Identity.registerExtension();
       Lifecycle.registerExtension();
       Signal.registerExtension();
+      Analytics.registerExtension();
       Media.registerExtension();
     } catch (Exception e) {
       // handle exception
