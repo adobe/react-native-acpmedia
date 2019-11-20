@@ -4,7 +4,7 @@ This is a sample video player to demostrate how @adobe/react-native-acpmedia can
 
 > 1.  Code is implemented in React Native js file. (reactNativeBasicPlayerSample/App.js)
 
-> 2.  Core, Analytics and Media extensions are registered
+> 2.  Core, Analytics and Media extensions are registered on native platforms
 
 > 3.  App can be run on Android and iOS platforms
 
