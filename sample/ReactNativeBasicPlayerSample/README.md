@@ -27,7 +27,7 @@ In `android/**/MainApplication.java`, find the call to `configureWithAppId` and 
 Run Pod update and Run app
 
 ```
-cd sample/ReactNativeBasicPlayerSample/ && npm install && cd ios/ pod update && cd .. && react-native run-ios
+cd sample/ReactNativeBasicPlayerSample/ && npm install && cd ios/ && pod update && cd .. && react-native run-ios
 ```
 
 > Note: If you see an error "Can't find simulator for "iPhoneX"", this is a known [issue](https://github.com/facebook/react-native/issues/23256) with React Native and you should try running the sample app inside of Xcode.
@@ -35,7 +35,7 @@ cd sample/ReactNativeBasicPlayerSample/ && npm install && cd ios/ pod update && 
 or
 
 ```
-cd sample/ReactNativeBasicPlayerSample/ && npm install && cd ios/ pod update
+cd sample/ReactNativeBasicPlayerSample/ && npm install && cd ios/ && pod update
 ```
 
 Then, open the Xcode project under the `ios` directory and hit run.
