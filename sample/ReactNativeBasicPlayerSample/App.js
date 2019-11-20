@@ -16,14 +16,10 @@ import {
   View,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  Dimensions,
   AppState,
 } from 'react-native';
-import {ACPCore} from '@adobe/react-native-acpcore';
-import {ACPAnalytics} from '@adobe/react-native-acpanalytics';
 import {
   ACPMedia,
-  ACPMediaTracker,
   ACPMediaConstants,
   ACPMediaType,
   ACPMediaEvent,
@@ -100,9 +96,7 @@ export default class App extends Component {
       paused: true,
       progress: 0,
       duration: 0,
-      resizeMode: 'contain',
       playInBackground: false,
-      ignoreSilentSwitch: 'ignore',
       appState: 'active',
     };
   }
@@ -114,7 +108,7 @@ export default class App extends Component {
 
   componentWillUnmount() {
     this.trackSessionEnd();
-    this.state.sessionStarted = false;
+    this.setState({sessionStarted: false});
     AppState.removeEventListener('change', this._handleAppStateChange);
   }
 
@@ -129,16 +123,12 @@ export default class App extends Component {
       nextAppState === 'active'
     ) {
       console.log('App is at the foreground!');
-      try {
-        this.trackPlay();
-        this.setState({appState: nextAppState});
-      } catch (err) {
-        err => console.log(err);
-      }
+      this.trackPlay();
+      this.setState({appState: nextAppState});
     }
   };
 
-  videoLoad = data => {
+  handleLoad = data => {
     this.setState({
       duration: data.duration,
     });
@@ -149,48 +139,36 @@ export default class App extends Component {
     this.setState({currentTracker: trackerHelper});
   };
 
-  videoReplay = () => {
+  handleReplay = () => {
     this.setState({paused: true}, () => this.player.seek(0));
   };
 
-  videoPlay = () => {
+  handlePlay = () => {
     this.setState(state => {
       return {
         paused: false,
       };
     });
     if (!this.state.sessionStarted) {
-      try {
-        this.updateCurrentPlayhead(0);
-        this.trackSessionStart();
-      } catch (err) {
-        err => console.log(err);
-      }
-      this.state.sessionStarted = true;
+      this.updateCurrentPlayhead(0);
+      this.trackSessionStart();
+      this.setState({sessionStarted: true});
     }
-    try {
-      this.trackPlay();
-      this.updateCurrentPlayhead(this.state.progress * this.state.duration);
-      this.updateQoEObject();
-    } catch (err) {
-      err => console.log(err);
-    }
+    this.trackPlay();
+    this.updateCurrentPlayhead(this.state.progress * this.state.duration);
+    this.updateQoEObject();
   };
 
-  videoPause = () => {
+  handlePause = () => {
     this.setState(state => {
       return {
         paused: true,
       };
     });
-    try {
-      this.trackPause();
-    } catch (err) {
-      err => console.log(err);
-    }
+    this.trackPause();
   };
 
-  videoStop = () => {
+  handleStop = () => {
     this.setState(state => {
       return {
         paused: true,
@@ -202,30 +180,28 @@ export default class App extends Component {
       };
     });
     this.trackSessionEnd();
-    this.videoReplay();
+    this.handleReplay();
   };
 
-  videoProgress = progress => {
-    this.setState({
-      progress: progress.currentTime / this.state.duration,
+  handleProgress = progress => {
+    this.setState(state => {
+      return {
+        progress: progress.currentTime / this.state.duration,
+      };
     });
     this.updateCurrentPlayhead(this.state.progress * this.state.duration);
   };
 
-  videoProgressSeek = e => {
+  handleProgressSeek = e => {
     const position = e.nativeEvent.locationX;
     const progress = (position / 250) * this.state.duration;
-    try {
-      this.player.seek(progress);
-      this.trackSeekStart();
-      this.updateCurrentPlayhead(progress);
-      this.trackSeekComplete();
-    } catch (err) {
-      err => console.log(err);
-    }
+    this.player.seek(progress);
+    this.trackSeekStart();
+    this.updateCurrentPlayhead(progress);
+    this.trackSeekComplete();
   };
 
-  videoEnd = () => {
+  handleEnd = () => {
     this.setState({paused: true});
     this.trackComplete();
     this.setState(state => {
@@ -234,7 +210,7 @@ export default class App extends Component {
       };
     });
     this.trackSessionEnd();
-    this.videoReplay();
+    this.handleReplay();
     this.setState({progress: 0});
   };
 
@@ -347,9 +323,6 @@ export default class App extends Component {
   }
 
   render() {
-    const {width} = Dimensions.get('window');
-    const {height} = Dimensions.get('window');
-
     return (
       <View style={styles.container}>
         <View>
@@ -359,9 +332,9 @@ export default class App extends Component {
             source={ClickBabyVideo}
             style={{width: '100%', height: '80%'}}
             resizeMode="contain"
-            onLoad={this.videoLoad}
-            onProgress={this.videoProgress}
-            onEnd={this.videoEnd}
+            onLoad={this.handleLoad}
+            onProgress={this.handleProgress}
+            onEnd={this.handleEnd}
             repeat={false}
             ignoreSilentSwitch={'ignore'}
             ref={component => {
@@ -369,16 +342,16 @@ export default class App extends Component {
             }}
           />
           <View style={styles.controls}>
-            <TouchableOpacity onPress={this.videoPlay}>
+            <TouchableOpacity onPress={this.handlePlay}>
               <Icon name={'md-play'} size={25} color="white" />
             </TouchableOpacity>
-            <TouchableOpacity onPress={this.videoPause}>
+            <TouchableOpacity onPress={this.handlePause}>
               <Icon name={'md-pause'} size={25} color="white" />
             </TouchableOpacity>
-            <TouchableOpacity onPress={this.videoStop}>
+            <TouchableOpacity onPress={this.handleStop}>
               <Icon name={'md-square'} size={25} color="white" />
             </TouchableOpacity>
-            <TouchableWithoutFeedback onPress={this.videoProgressSeek}>
+            <TouchableWithoutFeedback onPress={this.handleProgressSeek}>
               <View>
                 <ProgressBar
                   progress={this.state.progress}
