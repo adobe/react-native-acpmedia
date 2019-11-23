@@ -103,17 +103,17 @@ export default class App extends Component {
 
   //Setup listener for background or active app states
   componentDidMount() {
-    AppState.addEventListener('change', this._handleAppStateChange);
+    AppState.addEventListener('change', this.handleAppStateChange);
   }
 
   componentWillUnmount() {
     this.trackSessionEnd();
     this.setState({sessionStarted: false});
-    AppState.removeEventListener('change', this._handleAppStateChange);
+    AppState.removeEventListener('change', this.handleAppStateChange);
   }
 
   //Setup for tracking pause at backgroud
-  _handleAppStateChange = nextAppState => {
+  handleAppStateChange = nextAppState => {
     if (this.state.appState.match('active') && nextAppState === 'background') {
       console.log('App is at the background!');
       this.trackPause();
@@ -194,7 +194,7 @@ export default class App extends Component {
 
   handleProgressSeek = e => {
     const position = e.nativeEvent.locationX;
-    const progress = (position / 250) * this.state.duration;
+    const progress = (position / 200) * this.state.duration;
     this.player.seek(progress);
     this.trackSeekStart();
     this.updateCurrentPlayhead(progress);
