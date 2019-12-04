@@ -13,7 +13,7 @@ governing permissions and limitations under the License.
 
 @implementation ACPMedia (ACPMediaEventConversion)
 
-static NSString* const AdBreakStart = @"AdBreakStart";
+static NSString* const AdBreakStart = @"EventAdBreakStart";
 static NSString* const EventAdBreakComplete = @"EventAdBreakComplete";
 static NSString* const EventAdStart = @"EventAdStart";
 static NSString* const EventAdComplete = @"EventAdComplete";
@@ -55,7 +55,7 @@ static NSString* const EventBitrateChange = @"EventBitrateChange";
     } else if ([eventString isEqualToString:EventBitrateChange]) {
         return ACPMediaEventBitrateChange;
     }
-    
+
     return ACPMediaEventAdBreakStart;
 }
 

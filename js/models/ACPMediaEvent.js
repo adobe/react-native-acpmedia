@@ -13,7 +13,7 @@ governing permissions and limitations under the License.
 
 'use strict';
 
-const EventAdBreakStart = "AdBreakStart";
+const EventAdBreakStart = "EventAdBreakStart";
 const EventAdBreakComplete = "EventAdBreakComplete";
 const EventAdStart = "EventAdStart";
 const EventAdComplete = "EventAdComplete";
