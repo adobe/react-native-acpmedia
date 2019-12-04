@@ -183,7 +183,7 @@ tracker.trackError("errorId");
 ##### trackEvent:
 ```javascript
 let adBreakObject = ACPMedia.createAdBreakObject("adbreak-name", 1, 0);
-tracker.trackEvent(ACPMediaEvent.AdBreakStart, adBreakObject, null);
+tracker.trackEvent(ACPMediaEvent.EventAdBreakStart, adBreakObject, null);
 ```
 
 ##### updateCurrentPlayhead:
@@ -288,7 +288,7 @@ This defines the type of a tracking event.
 ```javascript
 import {ACPMediaEvent} from '@adobe/react-native-acpmedia';
 
-ACPMediaEvent.AdBreakStart
+ACPMediaEvent.EventAdBreakStart
 ACPMediaEvent.EventAdBreakComplete
 ACPMediaEvent.EventAdStart
 ACPMediaEvent.EventAdComplete
