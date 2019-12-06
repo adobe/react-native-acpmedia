@@ -91,8 +91,8 @@ describe('ACPMediaTracker', () => {
     let data = {"testKey": "testVal"};
 
     const spy = jest.spyOn(NativeModules.ACPMedia, 'trackEvent');
-    tracker.trackEvent(ACPMediaEvent.AdBreakStart, adBreakObject, data);
-    expect(spy).toHaveBeenCalledWith(tracker.trackerId, ACPMediaEvent.AdBreakStart, adBreakObject, data);
+    tracker.trackEvent(ACPMediaEvent.EventAdBreakStart, adBreakObject, data);
+    expect(spy).toHaveBeenCalledWith(tracker.trackerId, ACPMediaEvent.EventAdBreakStart, adBreakObject, data);
   });
 
   test('updateCurrentPlayhead is called with correct parameters', async () => {

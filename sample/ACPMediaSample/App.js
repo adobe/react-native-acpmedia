@@ -110,7 +110,7 @@ export default class App extends Component<Props> {
 
   trackEvent() {
       let adBreakObject = ACPMedia.createAdBreakObject("adbreak-name", 1, 0);
-      this.state.currentTracker.trackEvent(ACPMediaEvent.AdBreakStart, adBreakObject, null);
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventAdBreakStart, adBreakObject, null);
   }
 
   updateCurrentPlayhead() {

@@ -15,7 +15,7 @@ import android.util.Log;
 import com.adobe.marketing.mobile.Media.Event;
 
 public class RCTACPMediaDataBridge {
-    private static final String EventAdBreakStart = "AdBreakStart";
+    private static final String EventAdBreakStart = "EventAdBreakStart";
     private static final String EventAdBreakComplete = "EventAdBreakComplete";
     private static final String EventAdStart = "EventAdStart";
     private static final String EventAdComplete = "EventAdComplete";

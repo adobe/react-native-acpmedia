@@ -13,7 +13,7 @@ governing permissions and limitations under the License.
 
 'use strict';
 
-const AdBreakStart = "AdBreakStart";
+const EventAdBreakStart = "EventAdBreakStart";
 const EventAdBreakComplete = "EventAdBreakComplete";
 const EventAdStart = "EventAdStart";
 const EventAdComplete = "EventAdComplete";
@@ -30,8 +30,8 @@ const EventBitrateChange = "EventBitrateChange";
 
 class ACPMediaEvent {
 
-  static get AdBreakStart() {
-    return AdBreakStart;
+  static get EventAdBreakStart() {
+    return EventAdBreakStart;
   }
 
   static get EventAdBreakComplete() {
