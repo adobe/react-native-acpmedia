@@ -23,7 +23,7 @@ PODS:
     - React
   - RCTACPCore (1.1.3):
     - React
-  - RCTACPMedia (1.0.0-beta):
+  - RCTACPMedia (1.0.1-beta):
     - React
   - RCTRequired (0.61.3)
   - RCTTypeSafety (0.61.3):
@@ -342,7 +342,7 @@ SPEC CHECKSUMS:
   glog: 1f3da668190260b06b429bb211bfbee5cd790c28
   RCTACPAnalytics: 73481761a528828d1e5185fe2b8bd8df6e2aae6c
   RCTACPCore: 68ff0c650a9922c3f491ead574c479e723238fc0
-  RCTACPMedia: f24fe59b6c9481ad4bc21c812adb682c727db158
+  RCTACPMedia: e32361c070857112d9dc0f18aee551566a4ec3d3
   RCTRequired: a72523286ea3381f97b28d87529c265baad3ad7d
   RCTTypeSafety: e3cc0537400222250f0be37bd69f4b339d3c0a0f
   React: 3dc877fc32548b0c7108ca7f301466f4956cbff8
