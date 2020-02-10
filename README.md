@@ -89,7 +89,10 @@ import com.adobe.marketing.mobile.Media;
 Media.registerExtension();
 ```
 
+##### **Javascript:**
 ```javascript
+import {ACPMedia} from '@adobe/react-native-acpmedia';
+
 ACPMedia.registerExtension();
 ```
 
