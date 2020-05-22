@@ -89,6 +89,9 @@ const ACPMediaConstants = {
    ACPMediaKeyQoEFps: "qoe.fps",
    ACPMediaKeyQoEDroppedFrames: "qoe.droppedframes",
 
+   // Event Key export constants - State
+   ACPMediaKeyStateName: "state.name",
+
   // Event Key export constants - Time
   ACPMediaKeyPlayhead: "playhead",
   ACPMediaKeyTimeStamp: "timestamp",
@@ -100,6 +103,13 @@ const ACPMediaConstants = {
   // Event Key export constants - Config
    ACPMediaKeyConfigChannel: "config.channel",
    ACPMediaKeyConfigDownloadedContent: "config.downloadedcontent",
+
+  // Player State export constants
+   ACPMediaPlayerStateFullScreen : "fullScreen",
+   ACPMediaPlayerStatePictureInPicture : "pictureInPicture",
+   ACPMediaPlayerStateClosedCaption : "closedCaptioning",
+   ACPMediaPlayerStateInFocus : "inFocus",
+   ACPMediaPlayerStateMute : "mute",
 
   // Event Value export constants - Event Name
   ACPMediaKeyEventSessionStart: "sessionstart",
@@ -123,6 +133,8 @@ const ACPMediaConstants = {
   ACPMediaKeyEventError: "error",
   ACPMediaKeyEventQoEUpdate: "qoeupdate",
   ACPMediaKeyEventPlayheadUpdate:  "playheadupdate",
+  ACPMediaKeyEventStateStart: "statestart",
+  ACPMediaKeyEventStateEnd: "stateend",
 
 
   // Event Key export constants - Event export constants
