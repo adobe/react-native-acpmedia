@@ -34,33 +34,31 @@ RCT_EXPORT_METHOD(createTracker: (RCTPromiseResolveBlock) resolve rejecter:(RCTP
         _trackers = [NSMutableDictionary dictionary];
     }
 
-    [ACPMedia createTracker:^(ACPMediaTracker * _Nullable tracker) {
-        if (!tracker) {
-            reject(@"createTracker failed", @"Tracker was nil", nil);
-            return;
-        }
-                   
-        NSString *uuid = [[NSUUID UUID] UUIDString];
-        self->_trackers[uuid] = tracker;
-        resolve(uuid);
-    }];
+    ACPMediaTracker* tracker = [ACPMedia createTracker];
+    if (!tracker) {
+        reject(@"createTracker failed", @"Tracker was nil", nil);
+        return;
+    }
+
+    NSString *uuid = [[NSUUID UUID] UUIDString];
+    self->_trackers[uuid] = tracker;
+    resolve(uuid);
 }
 
 RCT_EXPORT_METHOD(createTrackerWithConfig:(NSDictionary*) config resolve:(RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!_trackers) {
         _trackers = [NSMutableDictionary dictionary];
     }
-
-    [ACPMedia createTrackerWithConfig:config callback:^(ACPMediaTracker * _Nullable tracker) {
-        if (!tracker) {
-            reject(@"createTrackerWithConfig failed", @"Tracker was nil", nil);
-            return;
-        }
-        
-        NSString *uuid = [[NSUUID UUID] UUIDString];
-        self->_trackers[uuid] = tracker;
-        resolve(uuid);
-    }];
+    
+    ACPMediaTracker* tracker = [ACPMedia createTrackerWithConfig:config];
+    if (!tracker) {
+        reject(@"createTrackerWithConfig failed", @"Tracker was nil", nil);
+        return;
+    }
+    
+    NSString *uuid = [[NSUUID UUID] UUIDString];
+    self->_trackers[uuid] = tracker;
+    resolve(uuid);
 }
 
 // Tracker API's
