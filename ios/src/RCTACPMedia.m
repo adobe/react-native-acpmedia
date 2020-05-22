@@ -41,7 +41,7 @@ RCT_EXPORT_METHOD(createTracker: (RCTPromiseResolveBlock) resolve rejecter:(RCTP
     }
 
     NSString *uuid = [[NSUUID UUID] UUIDString];
-    self->_trackers[uuid] = tracker;
+    _trackers[uuid] = tracker;
     resolve(uuid);
 }
 
@@ -57,7 +57,7 @@ RCT_EXPORT_METHOD(createTrackerWithConfig:(NSDictionary*) config resolve:(RCTPro
     }
     
     NSString *uuid = [[NSUUID UUID] UUIDString];
-    self->_trackers[uuid] = tracker;
+    _trackers[uuid] = tracker;
     resolve(uuid);
 }
 

@@ -68,7 +68,10 @@ export default class App extends Component<Props> {
   createTrackerWithConfig() {
     var config = new Object();
     config[ACPMediaConstants.ACPMediaKeyConfigChannel] = "customer-channel";
-    config[ACPMediaConstants.ACPMediaKeyConfigDownloadedContent] = true;
+
+    // For downloaded content tracking.
+    //config[ACPMediaConstants.ACPMediaKeyConfigDownloadedContent] = true;
+    
     ACPMedia.createTrackerWithConfig(config).then(tracker =>
       this.setState({currentTracker: tracker})
     ).catch(err => console.log(err));

@@ -30,8 +30,7 @@ static NSString* const EventStateStart = @"EventStateStart";
 static NSString* const EventStateEnd = @"EventStateEnd";
 
 + (ACPMediaEvent)mediaEventFromString:(NSString *)eventString {
-    if(eventString == nil) {
-
+    if(!eventString) {
         NSLog(@"ACPMedia+ACPMediaEventConversion(mediaEventFromString()): Error, Invalid media eventName=null");
         return ACPMediaEventAdBreakComplete;
     }
