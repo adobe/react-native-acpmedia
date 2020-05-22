@@ -186,24 +186,24 @@ tracker.trackSessionEnd();
 tracker.trackError("errorId");
 ```
 
-##### trackEvent(AdBreakStart):
+#### trackEvent APIs
 
 **Tracking AdBreaks**
 
-#### trackEvent(AdBreakStart):
+##### trackEvent(AdBreakStart):
 ```javascript
 let adBreakObject = ACPMedia.createAdBreakObject("adbreakName", 1, 0);
 tracker.trackEvent(ACPMediaEvent.EventAdBreakStart, adBreakObject, null);
 ```
 
-#### trackEvent(AdBreakComplete):
+##### trackEvent(AdBreakComplete):
 ```javascript
 tracker.trackEvent(ACPMediaEvent.EventAdBreakComplete, null, null);
 ```
 
 **Tracking ads**
 
-#### trackEvent(AdStart):
+##### trackEvent(AdStart):
 ```javascript
 let adObject = ACPMedia.createAdObject("adName", "adId", 1.0, 20.0);
 var adMetadata = new Object();
@@ -212,19 +212,19 @@ adMetadata[ACPMediaConstants.ACPAdMetadataKeyAdvertiser] = "SampleAdvertiser";
 tracker.trackEvent(ACPMediaEvent.EventAdStart, adObject, adMetadata);
 ```
 
-#### trackEvent(AdSkip):
+##### trackEvent(AdSkip):
 ```javascript
 tracker.trackEvent(ACPMediaEvent.EventAdSkip, null, null);
 ```
 
-#### trackEvent(AdComplete):
+##### trackEvent(AdComplete):
 ```javascript
 tracker.trackEvent(ACPMediaEvent.EventAdComplete, null, null);
 ```
 
 **Tracking chapters**
 
-#### trackEvent(ChapterStart):
+##### trackEvent(ChapterStart):
 ```javascript
 let chapterObject = ACPMedia.createChapterObject("chapterName", 1.0, 30.0, 1.0);
 var chapterMetadata = new Object();
@@ -233,26 +233,26 @@ chapterMetadata["segmentType"] = "Sample segment type";
 tracker.trackEvent(ACPMediaEvent.EventChapterStart, chapterObject, chapterMetadata);
 ```
 
-#### trackEvent(ChapterSkip):
+##### trackEvent(ChapterSkip):
 ```javascript
 tracker.trackEvent(ACPMediaEvent.EventChapterSkip, null, null);
 ```
 
-#### trackEvent(ChapterComplete):
+##### trackEvent(ChapterComplete):
 ```javascript
 tracker.trackEvent(ACPMediaEvent.EventChapterComplete, null, null);
 ```
 
 **Tracking Player States**
 
-#### trackEvent(StateStart):
+##### trackEvent(StateStart):
 ```javascript
 let stateObject = ACPMedia.createStateObject(ACPMediaConstants.ACPMediaPlayerStateFullScreen);
 
 tracker.trackEvent(ACPMediaEvent.EventStateStart, stateObject, null);
 ```
 
-#### trackEvent(StateEnd):
+##### trackEvent(StateEnd):
 ```javascript
 let stateObject = ACPMedia.createStateObject(ACPMediaConstants.ACPMediaPlayerStateFullScreen);
 
@@ -261,29 +261,29 @@ tracker.trackEvent(ACPMediaEvent.EventStateEnd, stateObject, null);
 
 **Tracking Playback events**
 
-#### trackEvent(BufferStart):
+##### trackEvent(BufferStart):
 ```javascript
 tracker.trackEvent(ACPMediaEvent.EventBufferStart, null, null);
 ```
 
-#### trackEvent(BufferComplete):
+##### trackEvent(BufferComplete):
 ```javascript
-tracker.trackEvent(ACPMediaEvent.EventBufferStart, null, null);
+tracker.trackEvent(ACPMediaEvent.EventBufferComplete, null, null);
 ```
 
-#### trackEvent(SeekStart):
+##### trackEvent(SeekStart):
 ```javascript
 tracker.trackEvent(ACPMediaEvent.EventSeekStart, null, null);
 ```
 
-#### trackEvent(SeekComplete):
+##### trackEvent(SeekComplete):
 ```javascript
 tracker.trackEvent(ACPMediaEvent.EventSeekComplete, null, null);
 ```
 
 **Tracking bitrate changes**
 
-#### trackEvent(BitrateChange):
+##### trackEvent(BitrateChange):
 ```javascript
 // If the new bitrate value is available provide it to the tracker.
 let qoeObject = ACPMedia.createQoEObject(2000000, 4, 23, 11);
