@@ -28,41 +28,51 @@ public class RCTACPMediaDataBridge {
     private static final String EventBufferStart = "EventBufferStart";
     private static final String EventBufferComplete = "EventBufferComplete";
     private static final String EventBitrateChange = "EventBitrateChange";
+    private static final String EventStateStart = "EventStateStart";
+    private static final String EventStateEnd = "EventStateEnd";
+
 
     public static Event mediaEventFromString(final String eventString) {
         if (eventString == null) {
-            Log.d("RCTACPMediaDataBridge", "Error: eventString was null");
-        }
-
-        if (eventString.equals(EventAdBreakStart)) {
-            return Event.AdBreakStart;
-        } else if (eventString.equals(EventAdBreakComplete)) {
+            Log.e("RCTACPMediaDataBridge", "Error: Invalid media eventName=null");
             return Event.AdBreakComplete;
-        } else if (eventString.equals(EventAdStart)) {
-            return Event.AdStart;
-        } else if (eventString.equals(EventAdComplete)) {
-            return Event.AdComplete;
-        } else if (eventString.equals(EventAdSkip)) {
-            return Event.AdSkip;
-        } else if (eventString.equals(EventChapterStart)) {
-            return Event.ChapterStart;
-        } else if (eventString.equals(EventChapterComplete)) {
-            return Event.ChapterComplete;
-        } else if (eventString.equals(EventChapterSkip)) {
-            return Event.ChapterSkip;
-        } else if (eventString.equals(EventSeekStart)) {
-            return Event.SeekStart;
-        } else if (eventString.equals(EventSeekComplete)) {
-            return Event.SeekComplete;
-        } else if (eventString.equals(EventBufferStart)) {
-            return Event.BufferStart;
-        } else if (eventString.equals(EventBufferComplete)) {
-            return Event.BufferComplete;
-        } else if (eventString.equals(EventBitrateChange)) {
-            return Event.BitrateChange;
         }
 
+        switch (eventString) {
+            case EventAdBreakStart:
+                return Event.AdBreakStart;
+            case EventAdBreakComplete:
+                return Event.AdBreakComplete;
+            case EventAdStart:
+                return Event.AdStart;
+            case EventAdComplete:
+                return Event.AdComplete;
+            case EventAdSkip:
+                return Event.AdSkip;
+            case EventChapterStart:
+                return Event.ChapterStart;
+            case EventChapterComplete:
+                return Event.ChapterComplete;
+            case EventChapterSkip:
+                return Event.ChapterSkip;
+            case EventSeekStart:
+                return Event.SeekStart;
+            case EventSeekComplete:
+                return Event.SeekComplete;
+            case EventBufferStart:
+                return Event.BufferStart;
+            case EventBufferComplete:
+                return Event.BufferComplete;
+            case EventBitrateChange:
+                return Event.BitrateChange;
+            case EventStateStart:
+                return Event.StateStart;
+            case EventStateEnd:
+                return Event.StateEnd;
+            default:
+                Log.e("RCTACPMediaDataBridge", "Error: Invalid media eventName=" + eventString);
+                return Event.AdBreakComplete;
+        }
 
-        return Event.AdBreakComplete;
     }
 }

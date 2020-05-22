@@ -60,36 +60,28 @@ public class RCTACPMediaModule extends ReactContextBaseJavaModule {
 
   @ReactMethod
   public void createTracker(final Promise promise) {
-    Media.createTracker(new AdobeCallback<MediaTracker>() {
-        @Override
-        public void call(MediaTracker mediaTracker) {
-            if (mediaTracker == null) {
-                promise.reject("createTracker failed", "Tracker was null");
-                return;
-            }
+      MediaTracker mediaTracker = Media.createTracker();
+      if (mediaTracker == null) {
+          promise.reject("createTracker failed", "Tracker was null");
+          return;
+      }
 
-            String uuid = UUID.randomUUID().toString();
-            trackers.put(uuid, mediaTracker);
-            promise.resolve(uuid);
-        }
-    });
+      String uuid = UUID.randomUUID().toString();
+      trackers.put(uuid, mediaTracker);
+      promise.resolve(uuid);
   }
 
   @ReactMethod
   public void createTrackerWithConfig(final ReadableMap config, final Promise promise) {
-      Media.createTracker(RCTACPMediaMapUtil.toMap(config), new AdobeCallback<MediaTracker>() {
-          @Override
-          public void call(MediaTracker mediaTracker) {
-              if (mediaTracker == null) {
-                  promise.reject("createTrackerWithConfig failed", "Tracker was null");
-                  return;
-              }
+      MediaTracker mediaTracker = Media.createTracker(RCTACPMediaMapUtil.toMap(config));
+      if (mediaTracker == null) {
+        promise.reject("createTrackerWithConfig failed", "Tracker was null");
+        return;
+      }
 
-              String uuid = UUID.randomUUID().toString();
-              trackers.put(uuid, mediaTracker);
-              promise.resolve(uuid);
-          }
-      });
+      String uuid = UUID.randomUUID().toString();
+      trackers.put(uuid, mediaTracker);
+      promise.resolve(uuid);
   }
 
   // Tracker API's
