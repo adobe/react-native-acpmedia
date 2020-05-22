@@ -48,7 +48,7 @@ describe('ACPMedia', () => {
   });
 
   test('createAdBreakObject returns correct value', async () => {
-    let name = "mediaName";
+    let name = "adBreakName";
     let position = 1.0;
     let startTime = 2.0;
 
@@ -60,7 +60,7 @@ describe('ACPMedia', () => {
   });
 
   test('createAdObject returns correct value', async () => {
-    let name = "mediaName";
+    let name = "adName";
     let adId = "adId";
     let position = 1.0;
     let length = 2.0;
@@ -99,6 +99,14 @@ describe('ACPMedia', () => {
     expect(ret[ACPMediaConstants.ACPMediaKeyQoEStartupTime]).toBe(startupTime);
     expect(ret[ACPMediaConstants.ACPMediaKeyQoEFps]).toBe(fps);
     expect(ret[ACPMediaConstants.ACPMediaKeyQoEDroppedFrames]).toBe(droppedFrames);
+  });
+
+  test('createStateObject returns correct value', async () => {
+    let stateName = "state-name";
+
+    let ret = ACPMedia.createStateObject(stateName);
+
+    expect(ret[ACPMediaConstants.ACPMediaKeyStateName]).toBe(stateName);
   });
 
 });
