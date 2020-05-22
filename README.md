@@ -115,17 +115,17 @@ ACPMedia.createTrackerWithConfig(config).then(tracker =>
 );
 ```
 
-##### Create a media object:
+##### Create a Media object:
 ```javascript
 let mediaObject = ACPMedia.createMediaObject("media-name", "media-id", 60, ACPMediaConstants.ACPMediaStreamTypeVod, ACPMediaType.Video);
 ```
 
-##### Create a AdBreak object:
+##### Create an AdBreak object:
 ```javascript
 let adBreakObject = ACPMedia.createAdBreakObject("adbreak-name", 1, 0);
 ```
 
-##### Create a ad object:
+##### Create an Ad object:
 ```javascript
 let adObject = ACPMedia.createAdObject("media-name", "ad-id", 1, 30);
 ```
@@ -138,6 +138,11 @@ let chapterObject = ACPMedia.createChapterObject('chapter-name', 2, 30, 1);
 ##### Create a QoE object:
 ```javascript
 let qoeObject = ACPMedia.createQoEObject(1000000, 2, 25, 10);
+```
+
+##### Create a State object:
+```javascript
+let stateObject = ACPMedia.createStateObject(ACPMediaConstants.ACPMediaPlayerStateFullScreen);
 ```
 
 #### Media Tracker API:
@@ -181,10 +186,110 @@ tracker.trackSessionEnd();
 tracker.trackError("errorId");
 ```
 
-##### trackEvent:
+##### trackEvent(AdBreakStart):
+
+**Tracking AdBreaks**
+
+#### trackEvent(AdBreakStart):
 ```javascript
-let adBreakObject = ACPMedia.createAdBreakObject("adbreak-name", 1, 0);
+let adBreakObject = ACPMedia.createAdBreakObject("adbreakName", 1, 0);
 tracker.trackEvent(ACPMediaEvent.EventAdBreakStart, adBreakObject, null);
+```
+
+#### trackEvent(AdBreakComplete):
+```javascript
+tracker.trackEvent(ACPMediaEvent.EventAdBreakComplete, null, null);
+```
+
+**Tracking ads**
+
+#### trackEvent(AdStart):
+```javascript
+let adObject = ACPMedia.createAdObject("adName", "adId", 1.0, 20.0);
+var adMetadata = new Object();
+adMetadata[ACPMediaConstants.ACPAdMetadataKeyAdvertiser] = "SampleAdvertiser";
+
+tracker.trackEvent(ACPMediaEvent.EventAdStart, adObject, adMetadata);
+```
+
+#### trackEvent(AdSkip):
+```javascript
+tracker.trackEvent(ACPMediaEvent.EventAdSkip, null, null);
+```
+
+#### trackEvent(AdComplete):
+```javascript
+tracker.trackEvent(ACPMediaEvent.EventAdComplete, null, null);
+```
+
+**Tracking chapters**
+
+#### trackEvent(ChapterStart):
+```javascript
+let chapterObject = ACPMedia.createChapterObject("chapterName", 1.0, 30.0, 1.0);
+var chapterMetadata = new Object();
+chapterMetadata["segmentType"] = "Sample segment type";
+
+tracker.trackEvent(ACPMediaEvent.EventChapterStart, chapterObject, chapterMetadata);
+```
+
+#### trackEvent(ChapterSkip):
+```javascript
+tracker.trackEvent(ACPMediaEvent.EventChapterSkip, null, null);
+```
+
+#### trackEvent(ChapterComplete):
+```javascript
+tracker.trackEvent(ACPMediaEvent.EventChapterComplete, null, null);
+```
+
+**Tracking Player States**
+
+#### trackEvent(StateStart):
+```javascript
+let stateObject = ACPMedia.createStateObject(ACPMediaConstants.ACPMediaPlayerStateFullScreen);
+
+tracker.trackEvent(ACPMediaEvent.EventStateStart, stateObject, null);
+```
+
+#### trackEvent(StateEnd):
+```javascript
+let stateObject = ACPMedia.createStateObject(ACPMediaConstants.ACPMediaPlayerStateFullScreen);
+
+tracker.trackEvent(ACPMediaEvent.EventStateEnd, stateObject, null);
+```
+
+**Tracking Playback events**
+
+#### trackEvent(BufferStart):
+```javascript
+tracker.trackEvent(ACPMediaEvent.EventBufferStart, null, null);
+```
+
+#### trackEvent(BufferComplete):
+```javascript
+tracker.trackEvent(ACPMediaEvent.EventBufferStart, null, null);
+```
+
+#### trackEvent(SeekStart):
+```javascript
+tracker.trackEvent(ACPMediaEvent.EventSeekStart, null, null);
+```
+
+#### trackEvent(SeekComplete):
+```javascript
+tracker.trackEvent(ACPMediaEvent.EventSeekComplete, null, null);
+```
+
+**Tracking bitrate changes**
+
+#### trackEvent(BitrateChange):
+```javascript
+// If the new bitrate value is available provide it to the tracker.
+let qoeObject = ACPMedia.createQoEObject(2000000, 4, 23, 11);
+tracker.updateQoEObject(qoeObject);
+
+tracker.trackEvent(ACPMediaEvent.EventBitrateChange, null, null);
 ```
 
 ##### updateCurrentPlayhead:
@@ -280,6 +385,18 @@ ACPMediaConstants.ACPAdMetadataKeyCreativeId
 ACPMediaConstants.ACPAdMetadataKeyPlacementId
 ACPMediaConstants.ACPAdMetadataKeySiteId
 ACPMediaConstants.ACPAdMetadataKeyCreativeUrl
+```
+
+##### Player state constants
+
+```javascript
+import {ACPMediaConstants} from '@adobe/react-native-acpmedia';
+
+ACPMediaConstants.ACPMediaPlayerStateFullScreen
+ACPMediaConstants.ACPMediaPlayerStatePictureInPicture
+ACPMediaConstants.ACPMediaPlayerStateClosedCaption
+ACPMediaConstants.ACPMediaPlayerStateInFocus
+ACPMediaConstants.ACPMediaPlayerStateMute
 ```
 
 ##### Media events
