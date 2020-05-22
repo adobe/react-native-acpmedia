@@ -130,6 +130,18 @@ module.exports = {
     ret[ACPMediaConstants.ACPMediaKeyQoEDroppedFrames] = droppedFrames;
 
     return ret;
+  },
+
+  /**
+   * @brief Creates an instance of the State info object.
+   *
+   * @param name The name of the State
+   */
+  createStateObject(stateName: String) {
+    var ret = new Object();
+    ret[ACPMediaConstants.ACPMediaKeyStateName] = stateName;
+
+    return ret;
   }
 
 };

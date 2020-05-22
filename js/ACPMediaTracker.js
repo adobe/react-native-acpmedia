@@ -15,6 +15,7 @@ governing permissions and limitations under the License.
 
 const RCTACPMedia = require('react-native').NativeModules.ACPMedia;
 import ACPMediaType from './models/ACPMediaType';
+import ACPMediaEvent from './models/ACPMediaEvent';
 
 class ACPMediaTracker {
   trackerId:   string;
