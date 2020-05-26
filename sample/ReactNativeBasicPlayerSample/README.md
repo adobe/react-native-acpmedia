@@ -48,7 +48,7 @@ Have an Android emulator running (quickest way to get started), or a device conn
 cd sample/ReactNativeBasicPlayerSample/ && npm install && react-native run-android
 ```
 
-Components used in the Sample App: react-native-video, react-native-progress, react-native-vector-icons
+Components used in the Sample App: react-native-video, react-native-progress, react-native-vector-icons, react-native-system-setting
 
 Sample App supports portrait view.
 
