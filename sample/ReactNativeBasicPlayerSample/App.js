@@ -28,64 +28,9 @@ import Video from 'react-native-video';
 import ProgressBar from 'react-native-progress/Bar';
 import Icon from 'react-native-vector-icons/Ionicons';
 import ClickBabyVideo from './vid/clickbaby.mp4';
+import SystemSetting from 'react-native-system-setting'
 
-//Helper tries to reuse existing code by queuing events till Tracker callback completes.
-const TrackerAdapter = (function() {
-  class TrackerAdapter {
-    constructor(config) {
-      this._queuedAPICalls = [];
-      this._tracker = null;
-      this._creatingTracker = true;
-      this._internalError = false;
-      var self = this;
-      ACPMedia.createTrackerWithConfig(config)
-        .then(function(tracker) {
-          self._creatingTracker = false;
-          self._tracker = tracker;
-          self._queuedAPICalls.forEach(function(apiCall) {
-            self[apiCall].apply(self._tracker, apiCall.arguments);
-          });
-        })
-        .catch(function(error) {
-          console.log(error);
-          self._internalError = true;
-        });
-    }
-  }
-
-  var apis = [
-    'trackSessionStart',
-    'trackSessionEnd',
-    'trackComplete',
-    'trackPlay',
-    'trackPause',
-    'trackEvent',
-    'trackError',
-    'updateCurrentPlayhead',
-    'updateQoEObject',
-  ];
-
-  apis.forEach(function(api) {
-    TrackerAdapter.prototype[api] = function() {
-      if (this._internalError) {
-        console.log('Error creating ACPMedia instance. API call is dropped.');
-        return;
-      }
-
-      if (this._creatingTracker) {
-        console.log('Creating ACPMedia instance. Queuing current API call.');
-        this._queuedAPICalls.push({
-          name: api,
-          arguments: arguments,
-        });
-        return;
-      }
-
-      this._tracker[api].apply(this._tracker, arguments);
-    };
-  });
-  return TrackerAdapter;
-})();
+volumeListener = null
 
 export default class App extends Component {
   constructor(props) {
@@ -100,16 +45,30 @@ export default class App extends Component {
       appState: 'active',
     };
   }
-
-  //Setup listener for background or active app states
+  
   componentDidMount() {
+    //Setup listener for background or active app states
     AppState.addEventListener('change', this.handleAppStateChange);
+
+    //Setup listener for volume and trigger acpmedia event player state when mute.
+    this.volumeListener = SystemSetting.addVolumeListener((data) => {
+    const volume = data.value;
+    if (volume == 0){
+      let stateObject = ACPMedia.createStateObject(ACPMediaConstants.ACPMediaPlayerStateMute);
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventStateStart, stateObject, null);
+    }
+    else{
+      let stateObject = ACPMedia.createStateObject(ACPMediaConstants.ACPMediaPlayerStateMute);
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventStateEnd, stateObject, null);
+    }
+    }); 
   }
 
   componentWillUnmount() {
     this.trackSessionEnd();
     this.setState({sessionStarted: false});
     AppState.removeEventListener('change', this.handleAppStateChange);
+    SystemSetting.removeListener(this.volumeListener);  
   }
 
   //Setup for tracking pause at backgroud
@@ -132,11 +91,7 @@ export default class App extends Component {
     this.setState({
       duration: data.duration,
     });
-    var config = new Object();
-    config[ACPMediaConstants.ACPMediaKeyConfigChannel] = 'test-channel';
-    config[ACPMediaConstants.ACPMediaKeyConfigDownloadedContent] = false;
-    var trackerHelper = this.createTrackerWithConfig(config);
-    this.setState({currentTracker: trackerHelper});
+    this.createTrackerWithConfig();  
   };
 
   handleReplay = () => {
@@ -233,11 +188,20 @@ export default class App extends Component {
 
   //Using media API
 
-  createTrackerWithConfig(config) {
-    return new TrackerAdapter(config);
+  createTrackerWithConfig() {
+    var config = new Object();
+    config[ACPMediaConstants.ACPMediaKeyConfigChannel] = "customer-channel";
+
+    // For downloaded content tracking.
+    //config[ACPMediaConstants.ACPMediaKeyConfigDownloadedContent] = true;
+    
+    ACPMedia.createTrackerWithConfig(config).then(tracker =>
+      this.setState({currentTracker: tracker})
+    ).catch(err => console.log(err));
   }
 
   trackSessionStart() {
+    ACPMedia.extensionVersion().then(version => console.log("AdobeExperienceSDK: ACPMedia version: " + version));
     let mediaObject = ACPMedia.createMediaObject(
       'media-name',
       'media-id',
@@ -294,7 +258,7 @@ export default class App extends Component {
       console.log('tracker is null, cannnot track seek');
       return;
     }
-    this.state.currentTracker.trackEvent(ACPMediaEvent.EventSeekStart);
+    this.state.currentTracker.trackEvent(ACPMediaEvent.EventSeekStart); 
   }
 
   trackSeekComplete() {

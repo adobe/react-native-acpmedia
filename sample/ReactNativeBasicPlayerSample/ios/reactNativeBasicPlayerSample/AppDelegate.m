@@ -38,7 +38,8 @@ governing permissions and limitations under the License.
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
   
-  [ACPCore setLogLevel:ACPMobileLogLevelVerbose];
+  [ACPCore setLogLevel:ACPMobileLogLevelDebug];
+  //replace with your launch app id
   [ACPCore configureWithAppId:@""];
   [ACPCore setWrapperType:ACPMobileWrapperTypeReactNative];
   [ACPIdentity registerExtension];
