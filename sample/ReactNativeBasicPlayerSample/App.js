@@ -218,7 +218,6 @@ export default class App extends Component {
     // Custom metadata keys
     mediaMetadata['isUserLoggedIn'] = 'false';
     mediaMetadata['tvStation'] = 'Sample TV station';
-    console.debug("just a text");
     this.state.currentTracker.trackSessionStart(mediaObject, mediaMetadata);
   }
 
@@ -258,10 +257,9 @@ export default class App extends Component {
     if (this.state.currentTracker === undefined) {
       console.log('tracker is null, cannnot track seek');
       return;
-    
-    this.state.currentTracker.trackEvent(ACPMediaEvent.EventSeekStart);
+    }
+    this.state.currentTracker.trackEvent(ACPMediaEvent.EventSeekStart); 
   }
-}
 
   trackSeekComplete() {
     if (this.state.currentTracker === undefined) {
