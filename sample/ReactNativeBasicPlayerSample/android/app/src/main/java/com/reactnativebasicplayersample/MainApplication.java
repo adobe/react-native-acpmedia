@@ -12,21 +12,14 @@ governing permissions and limitations under the License.
 package com.reactnativebasicplayersample;
 
 import android.app.Application;
-import android.content.Context;
 
 import com.adobe.marketing.mobile.AdobeCallback;
 import com.adobe.marketing.mobile.InvalidInitException;
-import com.adobe.marketing.mobile.reactnative.RCTACPCorePackage;
-import com.adobe.marketing.mobile.reactnative.analytics.RCTACPAnalyticsPackage;
-import com.adobe.marketing.mobile.reactnative.media.RCTACPMediaPackage;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
-import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-import java.lang.reflect.InvocationTargetException;
-import java.util.Arrays;
 import java.util.List;
 import com.adobe.marketing.mobile.MobileCore;
 import com.adobe.marketing.mobile.Identity;
@@ -72,7 +65,7 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
       super.onCreate();
       SoLoader.init(this, /* native exopackage */ false);
-      MobileCore.setLogLevel(LoggingMode.VERBOSE);
+      MobileCore.setLogLevel(LoggingMode.DEBUG);
       MobileCore.setApplication(this);
       MobileCore.setWrapperType(WrapperType.REACT_NATIVE);
 
@@ -83,6 +76,7 @@ public class MainApplication extends Application implements ReactApplication {
           Analytics.registerExtension();
           Media.registerExtension();
           MobileCore.start(new AdobeCallback() {
+              //add launch app id
               @Override
               public void call(Object o) {
                   MobileCore.configureWithAppID("");

@@ -26,6 +26,8 @@ const EventSeekComplete = "EventSeekComplete";
 const EventBufferStart = "EventBufferStart";
 const EventBufferComplete = "EventBufferComplete";
 const EventBitrateChange = "EventBitrateChange";
+const EventStateStart = "EventStateStart";
+const EventStateEnd = "EventStateEnd";
 
 
 class ACPMediaEvent {
@@ -80,6 +82,14 @@ class ACPMediaEvent {
 
   static get EventBitrateChange() {
     return EventBitrateChange;
+  }
+
+  static get EventStateStart() {
+    return EventStateStart;
+  }
+
+  static get EventStateEnd() {
+    return EventStateEnd;
   }
 
 }

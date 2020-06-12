@@ -68,7 +68,10 @@ export default class App extends Component<Props> {
   createTrackerWithConfig() {
     var config = new Object();
     config[ACPMediaConstants.ACPMediaKeyConfigChannel] = "customer-channel";
-    config[ACPMediaConstants.ACPMediaKeyConfigDownloadedContent] = true;
+
+    // For downloaded content tracking.
+    //config[ACPMediaConstants.ACPMediaKeyConfigDownloadedContent] = true;
+    
     ACPMedia.createTrackerWithConfig(config).then(tracker =>
       this.setState({currentTracker: tracker})
     ).catch(err => console.log(err));
@@ -86,6 +89,7 @@ export default class App extends Component<Props> {
     mediaMetadata["tvStation"] = "Sample TV station";
 
     this.state.currentTracker.trackSessionStart(mediaObject, mediaMetadata);
+
   }
 
   trackPlay() {
@@ -109,8 +113,82 @@ export default class App extends Component<Props> {
   }
 
   trackEvent() {
-      let adBreakObject = ACPMedia.createAdBreakObject("adbreak-name", 1, 0);
+
+      /***
+      *
+      * Tracking AdBreaks Ads
+      *
+      ***/
+      //AdBreakStart
+      let adBreakObject = ACPMedia.createAdBreakObject("adbreakName", 1.0, 0.0);
       this.state.currentTracker.trackEvent(ACPMediaEvent.EventAdBreakStart, adBreakObject, null);
+
+      //AdStart
+      let adObject = ACPMedia.createAdObject("adName", "adId", 1.0, 20.0);
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventAdStart, adObject, null);
+      //AdComplete
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventAdComplete, null , null);
+
+      //AdStart
+      let adObject2 = ACPMedia.createAdObject("adName2", "adId2", 2.0, 20.0);
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventAdStart, adObject2, null);
+      //AdSkip
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventAdSkip, null , null);
+
+      //AdBreakComplete
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventAdBreakComplete, null, null);
+
+      /***
+      *
+      * Tracking Chapters
+      *
+      ***/
+      //ChapterStart
+      let chapterObject = ACPMedia.createChapterObject("chapterName", 1.0, 30.0, 1.0);
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventChapterStart, chapterObject, null);
+
+      //ChapterComplete
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventChapterComplete, null , null);
+
+
+      /***
+      *
+      * Trackin Player States
+      *
+      ***/
+      //StateStart
+      let stateObject = ACPMedia.createStateObject(ACPMediaConstants.ACPMediaPlayerStateFullScreen);
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventStateStart, stateObject, null);
+      //StateEnd
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventStateEnd, stateObject, null);
+
+      /***
+      *
+      * Tracking playback events
+      *
+      ***/
+      //BufferStart
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventBufferStart, null, null);
+
+      //BufferComplete
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventBufferComplete, null, null);
+
+      //SeekStart
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventSeekStart, null, null);
+
+      //SeekComplete
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventSeekComplete, null, null);
+
+      /***
+      *
+      * Tracking bitrate changes
+      *
+      ***/
+      let qoeObject = ACPMedia.createQoEObject(2000000, 4, 23, 11);
+      this.state.currentTracker.updateQoEObject(qoeObject);
+
+      //BitrateChange
+      this.state.currentTracker.trackEvent(ACPMediaEvent.EventBitrateChange, null, null);
   }
 
   updateCurrentPlayhead() {
