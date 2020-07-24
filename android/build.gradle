@@ -35,5 +35,5 @@ repositories {
 
 dependencies {
     implementation "com.facebook.react:react-native:+"
-    api "com.adobe.marketing.mobile:media:2.0.0"
+    api "com.adobe.marketing.mobile:media:2.0.1"
 }
