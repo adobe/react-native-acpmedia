@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "@adobe/react-native-acpanalytics": "^1.1.5",
-    "@adobe/react-native-acpcore": "^1.2.3",
+    "@adobe/react-native-acpcore": "^1.2.5",
     "@adobe/react-native-acpmedia": "^2.0.0",
     "react": "^16.9.0",
     "react-native": "^0.62.2",
