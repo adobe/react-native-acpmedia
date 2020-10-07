@@ -65,6 +65,7 @@ const ACPMediaConstants = {
    ACPMediaKeyMediaStreamType: "media.streamtype",
    ACPMediaKeyMediaResumed: "media.resumed",
    ACPMediaKeyPrerollTrackingWaitingTime: "media.prerollwaitingtime",
+   ACPMediaKeyGranularAdTracking: "media.granularadtracking",
 
   // Event Key export constants - AdBreak
    ACPMediaKeyAdBreakName: "adbreak.name",
