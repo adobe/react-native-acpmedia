@@ -7,11 +7,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "@adobe/react-native-acpanalytics": "^1.1.5",
-    "@adobe/react-native-acpcore": "^1.2.5",
-    "@adobe/react-native-acpmedia": "2.0.0",
+    "@adobe/react-native-acpanalytics": "*",
+    "@adobe/react-native-acpcore": "*",
+    "@adobe/react-native-acpmedia": "*",
     "react": "16.6.3",
-    "react-native": "0.58.3"
+    "react-native": "0.58.3",
+    "graceful-fs": "4.2.2"
   },
   "devDependencies": {
     "babel-core": "7.0.0-bridge.0",
