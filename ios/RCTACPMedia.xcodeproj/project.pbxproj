@@ -3,13 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21D0CC28235F5BEA002043A2 /* libACPMedia_iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 211D5010235F51160067234A /* libACPMedia_iOS.a */; };
-		21D0CC29235F5BFE002043A2 /* ACPMediaConstants.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 211D5012235F51160067234A /* ACPMediaConstants.h */; };
-		21D0CC2A235F5BFE002043A2 /* ACPMedia.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 211D5013235F51160067234A /* ACPMedia.h */; };
+		21B629FD2590482F0039CE4D /* ACPMedia.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B629FB2590482F0039CE4D /* ACPMedia.xcframework */; };
+		21B62A02259048440039CE4D /* ACPMedia.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21B62A01259048390039CE4D /* ACPMedia.h */; };
+		21B62A03259048440039CE4D /* ACPMediaConstants.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21B62A00259048390039CE4D /* ACPMediaConstants.h */; };
 		21D0CC3B235F8F94002043A2 /* ACPMedia+ACPMediaEventConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D0CC3A235F8F94002043A2 /* ACPMedia+ACPMediaEventConversion.m */; };
 		B3E7B58A1CC2AC0600A0062D /* RCTACPMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RCTACPMedia.m */; };
 /* End PBXBuildFile section */
@@ -21,8 +21,8 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				21D0CC29235F5BFE002043A2 /* ACPMediaConstants.h in CopyFiles */,
-				21D0CC2A235F5BFE002043A2 /* ACPMedia.h in CopyFiles */,
+				21B62A02259048440039CE4D /* ACPMedia.h in CopyFiles */,
+				21B62A03259048440039CE4D /* ACPMediaConstants.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -30,9 +30,10 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRCTACPMedia.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTACPMedia.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		211D5010235F51160067234A /* libACPMedia_iOS.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libACPMedia_iOS.a; sourceTree = "<group>"; };
-		211D5012235F51160067234A /* ACPMediaConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACPMediaConstants.h; sourceTree = "<group>"; };
-		211D5013235F51160067234A /* ACPMedia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACPMedia.h; sourceTree = "<group>"; };
+		21B629FB2590482F0039CE4D /* ACPMedia.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ACPMedia.xcframework; sourceTree = "<group>"; };
+		21B629FC2590482F0039CE4D /* ACPMediaTV.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ACPMediaTV.xcframework; sourceTree = "<group>"; };
+		21B62A00259048390039CE4D /* ACPMediaConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACPMediaConstants.h; path = "ACPMedia.xcframework/ios-arm64_armv7_armv7s/Headers/ACPMediaConstants.h"; sourceTree = "<group>"; };
+		21B62A01259048390039CE4D /* ACPMedia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACPMedia.h; path = "ACPMedia.xcframework/ios-arm64_armv7_armv7s/Headers/ACPMedia.h"; sourceTree = "<group>"; };
 		21D0CC39235F8F94002043A2 /* ACPMedia+ACPMediaEventConversion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ACPMedia+ACPMediaEventConversion.h"; path = "src/ACPMedia+ACPMediaEventConversion.h"; sourceTree = "<group>"; };
 		21D0CC3A235F8F94002043A2 /* ACPMedia+ACPMediaEventConversion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ACPMedia+ACPMediaEventConversion.m"; path = "src/ACPMedia+ACPMediaEventConversion.m"; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RCTACPMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTACPMedia.h; path = src/RCTACPMedia.h; sourceTree = "<group>"; };
@@ -44,7 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21D0CC28235F5BEA002043A2 /* libACPMedia_iOS.a in Frameworks */,
+				21B629FD2590482F0039CE4D /* ACPMedia.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,19 +63,12 @@
 		211D500F235F51160067234A /* libs */ = {
 			isa = PBXGroup;
 			children = (
-				211D5010235F51160067234A /* libACPMedia_iOS.a */,
-				211D5011235F51160067234A /* include */,
+				21B62A01259048390039CE4D /* ACPMedia.h */,
+				21B62A00259048390039CE4D /* ACPMediaConstants.h */,
+				21B629FB2590482F0039CE4D /* ACPMedia.xcframework */,
+				21B629FC2590482F0039CE4D /* ACPMediaTV.xcframework */,
 			);
 			path = libs;
-			sourceTree = "<group>";
-		};
-		211D5011235F51160067234A /* include */ = {
-			isa = PBXGroup;
-			children = (
-				211D5012235F51160067234A /* ACPMediaConstants.h */,
-				211D5013235F51160067234A /* ACPMedia.h */,
-			);
-			path = include;
 			sourceTree = "<group>";
 		};
 		58B511D21A9E6C8500147676 = {
@@ -96,9 +90,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RCTACPMedia" */;
 			buildPhases = (
+				58B511D91A9E6C8500147676 /* CopyFiles */,
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
-				58B511D91A9E6C8500147676 /* CopyFiles */,
 			);
 			buildRules = (
 			);
