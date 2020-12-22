@@ -18,13 +18,13 @@ Pod::Spec.new do |s|
   s.requires_arc = true
 
   s.dependency "React"
-  
-  s.ios.vendored_libraries = 'ios/libs/libACPMedia_iOS.a'
+
+  s.ios.vendored_frameworks = 'ios/libs/ACPMedia.xcframework'
   s.ios.frameworks = 'UIKit', 'SystemConfiguration', 'WebKit', 'UserNotifications'
   s.ios.library = 'sqlite3.0', 'c++', 'z'
-  
-  s.tvos.vendored_libraries = 'ios/libs/tvos/libACPMedia_tvOS.a'
+
+  s.tvos.vendored_frameworks = 'ios/libs/ACPMediaTV.xcframework'
   s.tvos.frameworks = 'SystemConfiguration'
-  s.tvos.library = 'sqlite3.0', 'c++', 'z'  
+  s.tvos.library = 'sqlite3.0', 'c++', 'z'
 
 end
