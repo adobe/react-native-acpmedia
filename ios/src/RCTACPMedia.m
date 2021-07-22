@@ -25,10 +25,6 @@ RCT_EXPORT_METHOD(extensionVersion: (RCTPromiseResolveBlock) resolve rejecter:(R
     resolve([ACPMedia extensionVersion]);
 }
 
-RCT_EXPORT_METHOD(registerExtension) {
-    [ACPMedia registerExtension];
-}
-
 RCT_EXPORT_METHOD(createTracker: (RCTPromiseResolveBlock) resolve rejecter:(RCTPromiseRejectBlock)reject) {
     if (!_trackers) {
         _trackers = [NSMutableDictionary dictionary];
