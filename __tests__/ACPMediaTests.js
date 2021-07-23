@@ -25,12 +25,6 @@ describe('ACPMedia', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  test('registerExtension is called', async () => {
-    const spy = jest.spyOn(NativeModules.ACPMedia, 'registerExtension');
-    await ACPMedia.registerExtension();
-    expect(spy).toHaveBeenCalled();
-  });
-
   test('createMediaObject returns correct value', async () => {
     let name = "mediaName";
     let mediaId = "mediaId";
