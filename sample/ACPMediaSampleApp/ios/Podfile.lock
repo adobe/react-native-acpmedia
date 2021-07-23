@@ -79,7 +79,7 @@ PODS:
   - RCTACPCore (2.0.0):
     - ACPCore
     - React
-  - RCTACPMedia (2.3.1):
+  - RCTACPMedia (3.0.0):
     - ACPMedia
     - React
   - RCTRequired (0.64.2)
@@ -486,7 +486,7 @@ SPEC CHECKSUMS:
   OpenSSL-Universal: 1aa4f6a6ee7256b83db99ec1ccdaa80d10f9af9b
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
   RCTACPCore: b2954e0c71617c7d6306f62e347bd543f8a46723
-  RCTACPMedia: d02269dd993fbc649851fdcda144ef7f83fd7ae6
+  RCTACPMedia: de95454d8ffd13750cc7344f005f9cc56ca423a5
   RCTRequired: 6d3e854f0e7260a648badd0d44fc364bc9da9728
   RCTTypeSafety: c1f31d19349c6b53085766359caac425926fafaa
   React: bda6b6d7ae912de97d7a61aa5c160db24aa2ad69
