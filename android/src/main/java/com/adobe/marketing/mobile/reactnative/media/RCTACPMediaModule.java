@@ -50,15 +50,6 @@ public class RCTACPMediaModule extends ReactContextBaseJavaModule {
   }
 
   @ReactMethod
-  public void registerExtension() {
-      try {
-          Media.registerExtension();
-      } catch (InvalidInitException e) {
-          Log.d(getName(), "Registering Media extension failed with error: " + e.getMessage());
-      }
-  }
-
-  @ReactMethod
   public void createTracker(final Promise promise) {
       MediaTracker mediaTracker = Media.createTracker();
       if (mediaTracker == null) {
