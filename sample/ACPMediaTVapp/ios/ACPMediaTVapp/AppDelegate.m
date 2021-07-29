@@ -49,21 +49,25 @@ static void InitializeFlipper(UIApplication *application) {
 
   RCTBridge *bridge = [[RCTBridge alloc] initWithDelegate:self launchOptions:launchOptions];
   RCTRootView *rootView = [[RCTRootView alloc] initWithBridge:bridge
-                                                   moduleName:@"ACPMediaSampleApp"
+                                                   moduleName:@"ACPMediaTVapp"
                                             initialProperties:nil];
 
+#if TARGET_OS_TV
+  rootView.backgroundColor = [UIColor whiteColor];
+#else
   if (@available(iOS 13.0, *)) {
       rootView.backgroundColor = [UIColor systemBackgroundColor];
   } else {
       rootView.backgroundColor = [UIColor whiteColor];
   }
+#endif
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];
   rootViewController.view = rootView;
   self.window.rootViewController = rootViewController;
   [self.window makeKeyAndVisible];
-  
+ 
   [ACPCore setLogLevel:ACPMobileLogLevelVerbose];
     [ACPCore configureWithAppId:@"yourAppId"];
     [ACPCore setWrapperType:ACPMobileWrapperTypeReactNative];
@@ -73,7 +77,7 @@ static void InitializeFlipper(UIApplication *application) {
     [ACPMedia registerExtension];
 
     [ACPCore start:nil];
-  
+    
   return YES;
 }
 
