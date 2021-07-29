@@ -14,6 +14,11 @@ governing permissions and limitations under the License.
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <ACPCore.h>
+#import <ACPLifecycle.h>
+#import <ACPIdentity.h>
+#import <ACPSignal.h>
+#import <ACPMedia.h>
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -64,7 +69,7 @@ static void InitializeFlipper(UIApplication *application) {
   [self.window makeKeyAndVisible];
  
   [ACPCore setLogLevel:ACPMobileLogLevelVerbose];
-    [ACPCore configureWithAppId:@"youAppId"];
+    [ACPCore configureWithAppId:@"yourAppId"];
     [ACPCore setWrapperType:ACPMobileWrapperTypeReactNative];
     [ACPIdentity registerExtension];
     [ACPLifecycle registerExtension];

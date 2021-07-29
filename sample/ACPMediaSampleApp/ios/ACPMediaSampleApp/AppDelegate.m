@@ -14,6 +14,11 @@ governing permissions and limitations under the License.
 #import <React/RCTBridge.h>
 #import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
+#import <ACPCore.h>
+#import <ACPLifecycle.h>
+#import <ACPIdentity.h>
+#import <ACPSignal.h>
+#import <ACPMedia.h>
 
 #ifdef FB_SONARKIT_ENABLED
 #import <FlipperKit/FlipperClient.h>
@@ -22,11 +27,6 @@ governing permissions and limitations under the License.
 #import <FlipperKitNetworkPlugin/FlipperKitNetworkPlugin.h>
 #import <SKIOSNetworkPlugin/SKIOSNetworkAdapter.h>
 #import <FlipperKitReactPlugin/FlipperKitReactPlugin.h>
-#import <ACPCore.h>
-#import <ACPLifecycle.h>
-#import <ACPIdentity.h>
-#import <ACPSignal.h>
-#import <ACPMedia.h>
 
 static void InitializeFlipper(UIApplication *application) {
   FlipperClient *client = [FlipperClient sharedClient];
