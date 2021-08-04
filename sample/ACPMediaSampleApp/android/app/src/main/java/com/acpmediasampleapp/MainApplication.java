@@ -65,7 +65,7 @@ public class MainApplication extends Application implements ReactApplication {
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
     MobileCore.setApplication(this); // add this line
     MobileCore.setLogLevel(LoggingMode.VERBOSE);
-    MobileCore.configureWithAppID("youAppId");
+    MobileCore.configureWithAppID("yourAppId");
     MobileCore.setWrapperType(WrapperType.REACT_NATIVE);
 
     try {
