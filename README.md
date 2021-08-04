@@ -8,6 +8,9 @@
 
 `@adobe/react-native-acpmedia` is a wrapper around the iOS, tvOS and Android [AEP Media SDK](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/adobe-media-analytics) to allow for integration with React Native applications. Functionality to enable Adobe Media Analytics is provided entirely through JavaScript documented below.
 
+## Requirements
+- `@adobe/react-native-acpmedia 2.x` requires `React Native 0.44.+`
+- `@adobe/react-native-acpmedia 3.x` requires `React Native 0.60.+`
 
 ## Installation
 
