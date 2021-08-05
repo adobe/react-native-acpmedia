@@ -1,4 +1,9 @@
 PODS:
+  - ACPAnalytics (2.5.1):
+    - ACPAnalytics/xcframeworks (= 2.5.1)
+    - ACPCore (>= 2.9.0)
+  - ACPAnalytics/xcframeworks (2.5.1):
+    - ACPCore (>= 2.9.0)
   - ACPCore (2.9.4):
     - ACPCore/main (= 2.9.4)
   - ACPCore/main (2.9.4)
@@ -27,6 +32,9 @@ PODS:
     - boost-for-react-native
     - DoubleConversion
     - glog
+  - RCTACPAnalytics (2.0.0):
+    - ACPAnalytics
+    - React
   - RCTACPCore (2.0.0):
     - ACPCore
     - React
@@ -261,6 +269,7 @@ DEPENDENCIES:
   - FBReactNativeSpec (from `../node_modules/react-native/React/FBReactNativeSpec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
   - RCT-Folly (from `../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec`)
+  - "RCTACPAnalytics (from `../node_modules/@adobe/react-native-acpanalytics`)"
   - "RCTACPCore (from `../node_modules/@adobe/react-native-acpcore`)"
   - "RCTACPMedia (from `../node_modules/@adobe/react-native-acpmedia`)"
   - RCTRequired (from `../node_modules/react-native/Libraries/RCTRequired`)
@@ -289,6 +298,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - ACPAnalytics
     - ACPCore
     - ACPMedia
     - boost-for-react-native
@@ -304,6 +314,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   RCT-Folly:
     :podspec: "../node_modules/react-native/third-party-podspecs/RCT-Folly.podspec"
+  RCTACPAnalytics:
+    :path: "../node_modules/@adobe/react-native-acpanalytics"
   RCTACPCore:
     :path: "../node_modules/@adobe/react-native-acpcore"
   RCTACPMedia:
@@ -352,14 +364,16 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  ACPAnalytics: 65bc33a03d31dc3e60f061766b629aac988d1e29
   ACPCore: 7d09a5b7233d72fa7cb4369c99a8250fd7240305
   ACPMedia: 3868c04bb540b50ee54a4a75eae2765a58a406ee
   boost-for-react-native: 39c7adb57c4e60d6c5479dd8623128eb5b3f0f2c
   DoubleConversion: cde416483dac037923206447da6e1454df403714
   FBLazyVector: ef2fe79f7bbeabfb35b9860567ef63f4dd7bd21d
-  FBReactNativeSpec: 7b5b284bd9b2ea09cbed41624e560adf73554936
+  FBReactNativeSpec: c8639fc2fb4d97be617c90b99bc34ac089ffcea4
   glog: 40a13f7840415b9a77023fbcae0f1e6f43192af3
   RCT-Folly: ec7a233ccc97cc556cf7237f0db1ff65b986f27c
+  RCTACPAnalytics: 2c1282a0b701938f69895c6268582ab2125a33a5
   RCTACPCore: b2954e0c71617c7d6306f62e347bd543f8a46723
   RCTACPMedia: de95454d8ffd13750cc7344f005f9cc56ca423a5
   RCTRequired: 6ce1cc01e1921b27696340266d897eafc5a05b75
