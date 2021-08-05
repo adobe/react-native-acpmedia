@@ -18,6 +18,7 @@ governing permissions and limitations under the License.
 #import <ACPLifecycle.h>
 #import <ACPIdentity.h>
 #import <ACPSignal.h>
+#import <ACPAnalytics.h>
 #import <ACPMedia.h>
 
 #ifdef FB_SONARKIT_ENABLED
@@ -70,6 +71,7 @@ static void InitializeFlipper(UIApplication *application) {
     [ACPIdentity registerExtension];
     [ACPLifecycle registerExtension];
     [ACPSignal registerExtension];
+    [ACPAnalytics registerExtension];
     [ACPMedia registerExtension];
 
     [ACPCore start:nil];
