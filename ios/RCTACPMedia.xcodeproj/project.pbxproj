@@ -3,14 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		21B629FD2590482F0039CE4D /* ACPMedia.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21B629FB2590482F0039CE4D /* ACPMedia.xcframework */; };
-		21B62A02259048440039CE4D /* ACPMedia.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21B62A01259048390039CE4D /* ACPMedia.h */; };
-		21B62A03259048440039CE4D /* ACPMediaConstants.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 21B62A00259048390039CE4D /* ACPMediaConstants.h */; };
 		21D0CC3B235F8F94002043A2 /* ACPMedia+ACPMediaEventConversion.m in Sources */ = {isa = PBXBuildFile; fileRef = 21D0CC3A235F8F94002043A2 /* ACPMedia+ACPMediaEventConversion.m */; };
+		27806D4094C56DFAA8E6D2D6 /* libPods-RCTACPMedia.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C5AC1BB6D9542D0CA53F615E /* libPods-RCTACPMedia.a */; };
 		B3E7B58A1CC2AC0600A0062D /* RCTACPMedia.m in Sources */ = {isa = PBXBuildFile; fileRef = B3E7B5891CC2AC0600A0062D /* RCTACPMedia.m */; };
 /* End PBXBuildFile section */
 
@@ -21,8 +19,6 @@
 			dstPath = "include/$(PRODUCT_NAME)";
 			dstSubfolderSpec = 16;
 			files = (
-				21B62A02259048440039CE4D /* ACPMedia.h in CopyFiles */,
-				21B62A03259048440039CE4D /* ACPMediaConstants.h in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -30,14 +26,13 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRCTACPMedia.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRCTACPMedia.a; sourceTree = BUILT_PRODUCTS_DIR; };
-		21B629FB2590482F0039CE4D /* ACPMedia.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ACPMedia.xcframework; sourceTree = "<group>"; };
-		21B629FC2590482F0039CE4D /* ACPMediaTV.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = ACPMediaTV.xcframework; sourceTree = "<group>"; };
-		21B62A00259048390039CE4D /* ACPMediaConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACPMediaConstants.h; path = "ACPMedia.xcframework/ios-arm64_armv7_armv7s/Headers/ACPMediaConstants.h"; sourceTree = "<group>"; };
-		21B62A01259048390039CE4D /* ACPMedia.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = ACPMedia.h; path = "ACPMedia.xcframework/ios-arm64_armv7_armv7s/Headers/ACPMedia.h"; sourceTree = "<group>"; };
 		21D0CC39235F8F94002043A2 /* ACPMedia+ACPMediaEventConversion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "ACPMedia+ACPMediaEventConversion.h"; path = "src/ACPMedia+ACPMediaEventConversion.h"; sourceTree = "<group>"; };
 		21D0CC3A235F8F94002043A2 /* ACPMedia+ACPMediaEventConversion.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = "ACPMedia+ACPMediaEventConversion.m"; path = "src/ACPMedia+ACPMediaEventConversion.m"; sourceTree = "<group>"; };
+		A69E3A6B88D8914BB533944E /* Pods-RCTACPMedia.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCTACPMedia.release.xcconfig"; path = "Target Support Files/Pods-RCTACPMedia/Pods-RCTACPMedia.release.xcconfig"; sourceTree = "<group>"; };
 		B3E7B5881CC2AC0600A0062D /* RCTACPMedia.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RCTACPMedia.h; path = src/RCTACPMedia.h; sourceTree = "<group>"; };
 		B3E7B5891CC2AC0600A0062D /* RCTACPMedia.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RCTACPMedia.m; path = src/RCTACPMedia.m; sourceTree = "<group>"; };
+		C3CE1379015D4DE99EAD9D38 /* Pods-RCTACPMedia.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RCTACPMedia.debug.xcconfig"; path = "Target Support Files/Pods-RCTACPMedia/Pods-RCTACPMedia.debug.xcconfig"; sourceTree = "<group>"; };
+		C5AC1BB6D9542D0CA53F615E /* libPods-RCTACPMedia.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RCTACPMedia.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,7 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				21B629FD2590482F0039CE4D /* ACPMedia.xcframework in Frameworks */,
+				27806D4094C56DFAA8E6D2D6 /* libPods-RCTACPMedia.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,15 +55,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		211D500F235F51160067234A /* libs */ = {
+		2B632DD416224E334850ED87 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				21B62A01259048390039CE4D /* ACPMedia.h */,
-				21B62A00259048390039CE4D /* ACPMediaConstants.h */,
-				21B629FB2590482F0039CE4D /* ACPMedia.xcframework */,
-				21B629FC2590482F0039CE4D /* ACPMediaTV.xcframework */,
+				C3CE1379015D4DE99EAD9D38 /* Pods-RCTACPMedia.debug.xcconfig */,
+				A69E3A6B88D8914BB533944E /* Pods-RCTACPMedia.release.xcconfig */,
 			);
-			path = libs;
+			name = Pods;
+			path = Pods;
 			sourceTree = "<group>";
 		};
 		58B511D21A9E6C8500147676 = {
@@ -78,9 +72,18 @@
 				B3E7B5891CC2AC0600A0062D /* RCTACPMedia.m */,
 				21D0CC39235F8F94002043A2 /* ACPMedia+ACPMediaEventConversion.h */,
 				21D0CC3A235F8F94002043A2 /* ACPMedia+ACPMediaEventConversion.m */,
-				211D500F235F51160067234A /* libs */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				2B632DD416224E334850ED87 /* Pods */,
+				B2635C28CD6C3F2460EA6B4D /* Frameworks */,
 			);
+			sourceTree = "<group>";
+		};
+		B2635C28CD6C3F2460EA6B4D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C5AC1BB6D9542D0CA53F615E /* libPods-RCTACPMedia.a */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -90,6 +93,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RCTACPMedia" */;
 			buildPhases = (
+				52434F35F072FA7B27A787AD /* [CP] Check Pods Manifest.lock */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
@@ -134,6 +138,31 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		52434F35F072FA7B27A787AD /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RCTACPMedia-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
@@ -231,6 +260,7 @@
 		};
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C3CE1379015D4DE99EAD9D38 /* Pods-RCTACPMedia.debug.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -251,6 +281,7 @@
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A69E3A6B88D8914BB533944E /* Pods-RCTACPMedia.release.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

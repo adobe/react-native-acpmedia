@@ -27,13 +27,6 @@ module.exports = {
     return Promise.resolve(RCTACPMedia.extensionVersion());
   },
 
-  /**
-   * @brief Registers the ACPMedia extension with the Core Event Hub.
-   */
-  registerExtension() {
-    RCTACPMedia.registerExtension();
-  },
-
   createTracker(): Promise<string> {
     return RCTACPMedia.createTracker().then(trackerId => Promise.resolve(new ACPMediaTracker(trackerId))).catch(err => Promise.reject(err));
   },

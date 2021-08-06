@@ -8,7 +8,6 @@
 
 `@adobe/react-native-acpmedia` is a wrapper around the iOS, tvOS and Android [AEP Media SDK](https://aep-sdks.gitbook.io/docs/using-mobile-extensions/adobe-media-analytics) to allow for integration with React Native applications. Functionality to enable Adobe Media Analytics is provided entirely through JavaScript documented below.
 
-
 ## Installation
 
 You need to install the SDK with [npm](https://www.npmjs.com/) and configure the native Android/iOS project in your react native project. Before installing the Media extension it is recommended to begin by installing the [Core extension](https://github.com/adobe/react-native-acpcore) and the [Analytics extension](https://github.com/adobe/react-native-acpanalytics).
@@ -77,7 +76,7 @@ ACPMedia.extensionVersion().then(version => console.log("AdobeExperienceSDK: ACP
 
 ##### Registering the extension with ACPCore:
 
-> Note: It is recommended to initialize the SDK via native code inside your AppDelegate and MainApplication in iOS and Android respectively. However, you can still initialize the SDK in Javascript. For more information see how to initialize [Core](https://github.com/adobe/react-native-acpcore#initializing-the-sdk).
+> Note: It is recommended to initialize the SDK via native code inside your AppDelegate and MainApplication in iOS and Android respectively.
 
 ##### **iOS**
 ```objective-c
@@ -91,13 +90,6 @@ ACPMedia.extensionVersion().then(version => console.log("AdobeExperienceSDK: ACP
 import com.adobe.marketing.mobile.Media;
 
 Media.registerExtension();
-```
-
-##### **Javascript:**
-```javascript
-import {ACPMedia} from '@adobe/react-native-acpmedia';
-
-ACPMedia.registerExtension();
 ```
 
 #### Media API:
