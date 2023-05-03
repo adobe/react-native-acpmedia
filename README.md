@@ -61,7 +61,7 @@ make run-tests-locally
 
 ## Usage
 
-### [Media](https://developer.adobe.com/client-sdks/previous-versions/documentation/adobe-media-analytics/)
+### Media
 
 ##### Importing the extension:
 ```javascript
